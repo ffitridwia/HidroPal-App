@@ -1,7 +1,7 @@
 # HidroPal-App
 
-1. Fitri Dwi Alfina (192410102085)
-2. Dhia Hayyu Syahirah (192410102085)
+1. Fitri Dwi Alfina (192410102085) : https://github.com/ffitridwia
+2. Dhia Hayyu Syahirah (192410102085) : https://github.com/syahirah251
 
 Link : https://github.com/ffitridwia/HidroPal-App
 
