@@ -1,20 +1,38 @@
 import 'package:get/get.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class CatalogController extends GetxController {
-  //TODO: Implement CatalogController
+  FirebaseFirestore firestore = FirebaseFirestore.instance;
 
-  final count = 0.obs;
-  @override
-  void onInit() {
-    super.onInit();
+  Future<QuerySnapshot<Object?>> getData() async {
+    CollectionReference products = firestore.collection("products");
+    return products.get();
   }
 
-  @override
-  void onReady() {
-    super.onReady();
+  Stream<QuerySnapshot<Object?>> streamData() {
+    CollectionReference products = firestore.collection("products");
+    return products.orderBy("time", descending: true).snapshots();
   }
 
-  @override
-  void onClose() {}
-  void increment() => count.value++;
+  void deleteProduct(String docId) async {
+    DocumentReference docRef = firestore.collection("products").doc(docId);
+    try {
+      Get.defaultDialog(
+        title: "Delete Data",
+        middleText: "Apakah kamu yakin akan menghapus data ini?",
+        onConfirm: () async {
+          await docRef.delete();
+          Get.back();
+        },
+        textConfirm: "YES",
+        textCancel: "NO",
+      );
+    } catch (e) {
+      print(e);
+      Get.defaultDialog(
+        title: "Terjadi Kesalahan",
+        middleText: "Tidak berhasil menghapus data",
+      );
+    }
+  }
 }

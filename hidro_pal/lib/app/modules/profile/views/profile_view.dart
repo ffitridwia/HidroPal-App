@@ -102,12 +102,19 @@ class ProfileView extends GetView<ProfileController> {
             ),
           ],),
       ),
-      body: Center(
-        child: Text(
-          'ProfileView is working',
-          style: TextStyle(fontSize: 20),
+      body: Padding(
+          padding: const EdgeInsets.all(25),
+          child: Container(
+            width: double.infinity,
+            height: 200,
+            child: Container(
+              alignment: Alignment(0.0, 2.5),
+              child: CircleAvatar(
+                backgroundImage: NetworkImage("https://www.pngall.com/wp-content/uploads/5/User-Profile-PNG-High-Quality-Image.png"),
+                radius: 60.0),
+            ),
+          ),
         ),
-      ),
       bottomNavigationBar: BottomAppBar(
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,

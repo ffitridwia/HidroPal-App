@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
 import 'package:hidro_pal/app/routes/app_pages.dart';
+
 import '../controllers/catalog_controller.dart';
 
 class CatalogView extends GetView<CatalogController> {
@@ -13,6 +14,12 @@ class CatalogView extends GetView<CatalogController> {
       appBar: AppBar(
         title: Text('CatalogView'),
         centerTitle: true,
+        actions: [
+          IconButton(
+            onPressed: () => Get.toNamed(Routes.CART),
+            icon: Icon(Icons.shopping_cart,),
+          ),
+        ],
       ),
       drawer: Drawer(
         child: Column(
@@ -101,11 +108,38 @@ class CatalogView extends GetView<CatalogController> {
             ),
           ],),
       ),
-      body: Center(
-        child: Text(
-          'CatalogView is working',
-          style: TextStyle(fontSize: 20),
-        ),
+      body: StreamBuilder<QuerySnapshot<Object?>>(
+        stream: controller.streamData(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.active) {
+            var listAllDocs = snapshot.data!.docs;
+            return ListView.builder(
+              itemCount: listAllDocs.length,
+              itemBuilder: (context, index) => ListTile(
+                onTap: () => Get.toNamed(
+                  Routes.EDIT_PRODUCT,
+                  arguments: listAllDocs[index].id, 
+                ),
+                title: Text(
+                  "${(listAllDocs[index].data() as Map<String, dynamic>)["name"]}",
+                ),
+                subtitle: Text(
+                  "Rp ${(listAllDocs[index].data() as Map<String, dynamic>)["price"]}",
+                ),
+                trailing: IconButton(
+                  onPressed: () => 
+                    controller.deleteProduct(listAllDocs[index].id),
+                  icon: Icon(Icons.delete),
+                ),
+              ),
+            );
+          }
+          return Center(child: CircularProgressIndicator());
+        },
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => Get.toNamed(Routes.ADD_PRODUCT),
+        child: Icon(Icons.add),
       ),
       bottomNavigationBar: BottomAppBar(
         child: Row(

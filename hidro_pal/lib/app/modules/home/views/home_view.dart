@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hidro_pal/app/controllers/auth_controller.dart';
@@ -109,38 +108,15 @@ class HomeView extends GetView<HomeController> {
             ),
           ],),
       ),
-      body: StreamBuilder<QuerySnapshot<Object?>>(
-        stream: controller.streamData(),
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.active) {
-            var listAllDocs = snapshot.data!.docs;
-            return ListView.builder(
-              itemCount: listAllDocs.length,
-              itemBuilder: (context, index) => ListTile(
-                onTap: () => Get.toNamed(
-                  Routes.EDIT_PRODUCT,
-                  arguments: listAllDocs[index].id, 
-                ),
-                title: Text(
-                  "${(listAllDocs[index].data() as Map<String, dynamic>)["name"]}",
-                ),
-                subtitle: Text(
-                  "Rp ${(listAllDocs[index].data() as Map<String, dynamic>)["price"]}",
-                ),
-                trailing: IconButton(
-                  onPressed: () => 
-                    controller.deleteProduct(listAllDocs[index].id),
-                  icon: Icon(Icons.delete),
-                ),
-              ),
-            );
-          }
-          return Center(child: CircularProgressIndicator());
-        },
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => Get.toNamed(Routes.ADD_PRODUCT),
-        child: Icon(Icons.add),
+      body: Center(
+        child: Container(
+          width: 350,
+          height: 500,
+          color: Colors.white,
+          child: Image(
+            image: NetworkImage("https://media.suara.com/pictures/653x366/2020/06/12/75728-ilustrasi-sayur-organik.jpg")
+          ),
+        ),
       ),
       bottomNavigationBar: BottomAppBar(
         child: Row(
