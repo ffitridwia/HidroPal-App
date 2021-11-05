@@ -8,7 +8,7 @@ Link : https://github.com/ffitridwia/HidroPal-App
 Aplikasi HidroPal adalah sebuah aplikasi penyedia produk sayur hidroponik hasil cocok tanam petani hidroponik asal jember khusus dipasarkan untuk konsumen yang berdomisili jember. Dari sisi user, manfaat aplikasi ini adalah memudahkan mereka untuk memenuhi kebutuhan konsumen dalam mencari produk hidroponik dan kebutuhan petani dalam pemasaran produk. Dari sisi masyarakat adalah meningkatkan kesehatan masyarakat dan mendukung petani dalam bisnisnya sesuai dengan rencana aksi global SDGs nomor 2 yaitu mengakhiri kelaparan, mencapai ketahanan pangan, dan nutrisi yang lebih baik dan mendukung pertanian keberlanjutan.
 
 Fitur – fitur yang miliki oleh aplikasi HidroPal adalah sebagai berikut,
-1.	Resgistrasi: Fitur untuk user mendaftarkan diri dengan profil pengguna baru dengan menginputkan data diri seperti nama, nomor handphone, password, alamat, dan foto profil.
+1.	Registrasi: Fitur untuk user mendaftarkan diri dengan profil pengguna baru dengan menginputkan data diri seperti nama, nomor handphone, password, alamat, dan foto profil.
 2.	Login: Fitur untuk user masuk aplikasi menggunakan akun yang telah terdaftarkan sebelumnya dengan menginputkan data diri seperti nomor handphone dan password
 3.	Logout: Fitur untuk user keluar dari akun yang terdaftarkan dalam aplikasi.
 4.	Navigasi Menu: Fitur yang menampilkan profil user dan daftar menu aplikasi dalam satu tempat dan disertai nama menu.
