@@ -15,13 +15,93 @@ class HomeView extends GetView<HomeController> {
       appBar: AppBar(
         title: Text("Home View"),
         centerTitle: true,
-        actions: [
-          IconButton(
-            onPressed: () => authC.logout(),
-            icon: Icon(Icons.logout),
-          ),
-        ],
-      ), 
+      ),
+      drawer: Drawer(
+        child: Column(
+          children: [
+            Container(
+              padding: EdgeInsets.all(20),
+              width: double.infinity,
+              height: 120,
+              color: Colors.blue,
+              alignment: Alignment.bottomLeft,
+              child: Text(
+                "HidroPal Menu",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 24,
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            ListTile(
+              onTap: () => Get.toNamed(Routes.HOME),
+              leading: Icon(
+                Icons.home,
+                size: 35,
+              ),
+              title: Text(
+                "Home",
+                style: TextStyle(
+                  fontSize: 24,
+                ),
+              ),
+            ),
+            ListTile(
+              onTap: () => Get.toNamed(Routes.PROFILE),
+              leading: Icon(
+                Icons.person,
+                size: 35,
+              ),
+              title: Text(
+                "Profile",
+                style: TextStyle(
+                  fontSize: 24,
+                ),
+              ),
+            ),
+            ListTile(
+              onTap: () => Get.toNamed(Routes.CATALOG),
+              leading: Icon(
+                Icons.menu_open,
+                size: 35,
+              ),
+              title: Text(
+                "Catalog",
+                style: TextStyle(
+                  fontSize: 24,
+                ),
+              ),
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.shopping_cart,
+                size: 35,
+              ),
+              title: Text(
+                "Cart",
+                style: TextStyle(
+                  fontSize: 24,
+                ),
+              ),
+            ),
+            ListTile(
+              onTap: () => authC.logout(),
+              leading: Icon(
+                Icons.logout,
+                size: 35,
+              ),
+              title: Text(
+                "Logout",
+                style: TextStyle(
+                  fontSize: 24,
+                ),
+              ),
+            ),
+          ],),
+      ),
       body: StreamBuilder<QuerySnapshot<Object?>>(
         stream: controller.streamData(),
         builder: (context, snapshot) {
