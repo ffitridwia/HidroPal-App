@@ -2,17 +2,16 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:hidro_pal/app/routes/app_pages.dart';
-import '../controllers/profile_controller.dart';
+import '../controllers/cart_controller.dart';
 
-
-class ProfileView extends GetView<ProfileController> {
+class CartView extends GetView<CartController> {
   get authC => null;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('ProfileView'),
+        title: Text('CartView'),
         centerTitle: true,
       ),
       drawer: Drawer(
@@ -104,7 +103,7 @@ class ProfileView extends GetView<ProfileController> {
       ),
       body: Center(
         child: Text(
-          'ProfileView is working',
+          'CartView is working',
           style: TextStyle(fontSize: 20),
         ),
       ),

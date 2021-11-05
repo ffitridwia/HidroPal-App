@@ -74,6 +74,7 @@ class CatalogView extends GetView<CatalogController> {
               ),
             ),
             ListTile(
+              onTap: () => Get.toNamed(Routes.CART),
               leading: Icon(
                 Icons.shopping_cart,
                 size: 35,

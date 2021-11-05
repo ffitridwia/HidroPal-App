@@ -15,6 +15,12 @@ class HomeView extends GetView<HomeController> {
       appBar: AppBar(
         title: Text("Home View"),
         centerTitle: true,
+        actions: [
+          IconButton(
+            onPressed: () => Get.toNamed(Routes.CART),
+            icon: Icon(Icons.shopping_cart,),
+          ),
+        ],
       ),
       drawer: Drawer(
         child: Column(
@@ -76,6 +82,7 @@ class HomeView extends GetView<HomeController> {
               ),
             ),
             ListTile(
+              onTap: () => Get.toNamed(Routes.CART),
               leading: Icon(
                 Icons.shopping_cart,
                 size: 35,

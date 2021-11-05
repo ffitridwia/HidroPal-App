@@ -2,6 +2,8 @@ import 'package:get/get.dart';
 
 import 'package:hidro_pal/app/modules/add_product/bindings/add_product_binding.dart';
 import 'package:hidro_pal/app/modules/add_product/views/add_product_view.dart';
+import 'package:hidro_pal/app/modules/cart/bindings/cart_binding.dart';
+import 'package:hidro_pal/app/modules/cart/views/cart_view.dart';
 import 'package:hidro_pal/app/modules/catalog/bindings/catalog_binding.dart';
 import 'package:hidro_pal/app/modules/catalog/views/catalog_view.dart';
 import 'package:hidro_pal/app/modules/edit_product/bindings/edit_product_binding.dart';
@@ -57,6 +59,11 @@ class AppPages {
       name: _Paths.EDIT_PRODUCT,
       page: () => EditProductView(),
       binding: EditProductBinding(),
+    ),
+    GetPage(
+      name: _Paths.CART,
+      page: () => CartView(),
+      binding: CartBinding(),
     ),
   ];
 }
