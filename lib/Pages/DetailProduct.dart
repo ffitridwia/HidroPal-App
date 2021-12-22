@@ -1,4 +1,3 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hidropal/Variable.dart';
@@ -10,7 +9,8 @@ class DetailProduct extends StatefulWidget {
   String img;
   var deskripsi;
   int totalPesanan;
-  DetailProduct(this.namaBarang,this.harga,this.img,this.deskripsi,this.totalPesanan);
+  DetailProduct(
+      this.namaBarang, this.harga, this.img, this.deskripsi, this.totalPesanan);
 
   // const DetailProduct({Key? key}) : super(key: key);
 
@@ -21,43 +21,51 @@ class DetailProduct extends StatefulWidget {
 class _DetailProductState extends State<DetailProduct> {
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        onPressed: (){
-          if(widget.totalPesanan > 0){
+        onPressed: () {
+          if (widget.totalPesanan > 0) {
             setState(() {
-              troli.add([widget.namaBarang,widget.harga,widget.img,widget.totalPesanan]);
-
+              troli.add([
+                widget.namaBarang,
+                widget.harga,
+                widget.img,
+                widget.totalPesanan
+              ]);
             });
-            Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context){
+            Navigator.of(context)
+                .pushReplacement(MaterialPageRoute(builder: (context) {
               return MyCustomBottomNavigationBar(2);
             }));
           }
-
         },
-        child: Icon(Icons.add,),
+        child: Icon(
+          Icons.add,
+        ),
         backgroundColor: Colors.green,
       ),
       appBar: AppBar(
-        elevation: 2,
-        automaticallyImplyLeading: false,
-        backgroundColor: Color.fromRGBO(244, 255, 236, 1),
-        title: Row(
-          children: [
-            IconButton(
-                onPressed: (){
-                  Navigator.of(context).pop();
-                },
-                icon: Icon(Icons.arrow_back,color: Colors.black,)),
-            Text("Detil Produk",style: TextStyle(color: Colors.black),),
-          ],
-        )
-
-
-      ),
+          elevation: 2,
+          automaticallyImplyLeading: false,
+          backgroundColor: Color.fromRGBO(244, 255, 236, 1),
+          title: Row(
+            children: [
+              IconButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  icon: Icon(
+                    Icons.arrow_back,
+                    color: Colors.black,
+                  )),
+              Text(
+                "Detil Produk",
+                style: TextStyle(color: Colors.black),
+              ),
+            ],
+          )),
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 15,vertical: 10),
+        padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
         child: ListView(
           children: [
             Card(
@@ -66,27 +74,50 @@ class _DetailProductState extends State<DetailProduct> {
                 width: double.infinity,
                 height: 300,
                 decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage("assets/images/Products/"+widget.img)
-                  )
-                ),
-
+                    image: DecorationImage(
+                        image: AssetImage(
+                            "assets/images/Products/" + widget.img))),
               ),
             ),
-            SizedBox(height: 20,),
-            Text(widget.namaBarang,style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
-            SizedBox(height: 20,),
-            Text("Rp. "+widget.harga.toString(),style: TextStyle(fontSize: 20,)),
-            SizedBox(height: 20,),
-            Text("Deskripsi Produk : ",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
-            SizedBox(height: 10,),
-            for(int i=0; i<widget.deskripsi.length; i++)
-              Text(widget.deskripsi[i],style: TextStyle(fontSize: 20),),
-            SizedBox(height: 10,),
+            SizedBox(
+              height: 18,
+            ),
+            Text(
+              widget.namaBarang,
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(
+              height: 18,
+            ),
+            Text("Rp. " + widget.harga.toString(),
+                style: TextStyle(
+                  fontSize: 18,
+                )),
+            SizedBox(
+              height: 18,
+            ),
+            Text(
+              "Deskripsi Produk : ",
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            for (int i = 0; i < widget.deskripsi.length; i++)
+              Text(
+                widget.deskripsi[i],
+                style: TextStyle(fontSize: 15),
+              ),
+            SizedBox(
+              height: 10,
+            ),
             Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Text("Jumlah Pesan : ",style: TextStyle(fontSize: 24),),
+                Text(
+                  "Jumlah Pesan : ",
+                  style: TextStyle(fontSize: 18),
+                ),
                 Card(
                   // margin: EdgeInsets.symmetric(horizontal: 80),
                   elevation: 5,
@@ -94,35 +125,32 @@ class _DetailProductState extends State<DetailProduct> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       IconButton(
-                          onPressed: (){
-                            if(widget.totalPesanan>0){
+                          onPressed: () {
+                            if (widget.totalPesanan > 0) {
                               setState(() {
                                 widget.totalPesanan = widget.totalPesanan - 1;
                                 // print(widget.totalPesanan);
                               });
                             }
-
                           },
-                          icon: Icon(Icons.remove)
+                          icon: Icon(Icons.remove)),
+                      Text(
+                        widget.totalPesanan.toString(),
+                        style: TextStyle(fontSize: 18),
                       ),
-
-                      Text(widget.totalPesanan.toString(),style: TextStyle(fontSize: 20),),
-
                       IconButton(
-                          onPressed: (){
+                          onPressed: () {
                             setState(() {
                               widget.totalPesanan = widget.totalPesanan + 1;
                               // print(widget.totalPesanan);
                             });
                           },
-                          icon: Icon(Icons.add)
-                      ),
+                          icon: Icon(Icons.add)),
                     ],
                   ),
                 ),
               ],
             ),
-
           ],
         ),
       ),

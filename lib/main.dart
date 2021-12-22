@@ -6,9 +6,10 @@ import 'package:hidropal/Pages/Katalog.dart';
 import 'package:hidropal/Pages/Login.dart';
 import 'package:hidropal/Pages/Troli.dart';
 
-void main(){
+void main() {
   runApp(MyApp());
 }
+
 class MyApp extends StatelessWidget {
   // const MyApp({Key? key}) : super(key: key);
 
@@ -19,14 +20,9 @@ class MyApp extends StatelessWidget {
       home: Login(),
 
       // home: MyCustomBottomNavigationBar()
-
     );
   }
 }
-
-
-
-
 
 class MyCustomBottomNavigationBar extends StatefulWidget {
   int currentValue;
@@ -38,7 +34,6 @@ class MyCustomBottomNavigationBar extends StatefulWidget {
 
 class _MyCustomBottomNavigationBarState
     extends State<MyCustomBottomNavigationBar> with TickerProviderStateMixin {
-
   late AnimationController _controller;
   late Animation<double> _animation;
 
@@ -127,9 +122,20 @@ class _MyCustomBottomNavigationBarState
         elevation: 2,
         centerTitle: true,
         backgroundColor: Color.fromRGBO(244, 255, 236, 1),
-        title: Text(widget.currentValue == 0 ? "Hidropal" : widget.currentValue == 1 ? "Katalog" : widget.currentValue == 2 ? "Troli" : "Akun Pengguna",style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 20,
-
-        ),),
+        title: Text(
+          widget.currentValue == 0
+              ? "Hidropal"
+              : widget.currentValue == 1
+                  ? "Katalog"
+                  : widget.currentValue == 2
+                      ? "Troli"
+                      : "Akun Pengguna",
+          style: TextStyle(
+            color: Colors.black,
+            fontWeight: FontWeight.bold,
+            fontSize: 20,
+          ),
+        ),
       ),
       body: Stack(
         children: [
@@ -137,7 +143,13 @@ class _MyCustomBottomNavigationBarState
           SizedBox(
             height: size.height,
             width: size.width,
-            child: widget.currentValue == 0 ? HomePages() : widget.currentValue == 1 ? Katalog() : widget.currentValue == 2 ? Troli() : Akun(),
+            child: widget.currentValue == 0
+                ? HomePages()
+                : widget.currentValue == 1
+                    ? Katalog()
+                    : widget.currentValue == 2
+                        ? Troli()
+                        : Akun(),
           ),
 
           Positioned(
@@ -160,7 +172,9 @@ class _MyCustomBottomNavigationBarState
                   IconButton(
                     icon: Icon(
                       Icons.home,
-                      color: widget.currentValue == 0 ? Colors.black : Colors.black38,
+                      color: widget.currentValue == 0
+                          ? Colors.black
+                          : Colors.black38,
                       size: _animation.value,
                     ),
                     onPressed: () {
@@ -178,12 +192,14 @@ class _MyCustomBottomNavigationBarState
                     highlightColor: Colors.transparent,
                   ),
                   IconButton(
-                    icon: Image.asset('assets/icon/katalog.png'
-                    , color: widget.currentValue == 1 ? Colors.black : Colors.black38,
+                    icon: Image.asset(
+                      'assets/icon/katalog.png',
+                      color: widget.currentValue == 1
+                          ? Colors.black
+                          : Colors.black38,
                       // scale: _animation2.value,
                       width: _animation2.value,
                       height: _animation2.value,
-
                     ),
                     onPressed: () {
                       setState(() {
@@ -199,10 +215,12 @@ class _MyCustomBottomNavigationBarState
                     splashColor: Colors.transparent,
                     highlightColor: Colors.transparent,
                   ),
-
                   IconButton(
-                    icon: Image.asset('assets/icon/troli.png',
-                      color: widget.currentValue == 2 ? Colors.black : Colors.black38,
+                    icon: Image.asset(
+                      'assets/icon/troli.png',
+                      color: widget.currentValue == 2
+                          ? Colors.black
+                          : Colors.black38,
                       width: _animation4.value,
                       height: _animation4.value,
                     ),
@@ -223,7 +241,9 @@ class _MyCustomBottomNavigationBarState
                   IconButton(
                     icon: Icon(
                       Icons.person,
-                      color: widget.currentValue == 3 ? Colors.black : Colors.black38,
+                      color: widget.currentValue == 3
+                          ? Colors.black
+                          : Colors.black38,
                       size: _animation5.value,
                     ),
                     onPressed: () {
@@ -250,30 +270,28 @@ class _MyCustomBottomNavigationBarState
   }
 }
 
-
-
 class Transition extends PageRouteBuilder {
   final Widget page;
 
   Transition(this.page)
       : super(
-    pageBuilder: (context, animation, anotherAnimation) => page,
-    transitionDuration: Duration(milliseconds: 1000),
-    reverseTransitionDuration: Duration(milliseconds: 200),
-    transitionsBuilder: (context, animation, anotherAnimation, child) {
-      animation = CurvedAnimation(
-          curve: Curves.fastLinearToSlowEaseIn,
-          parent: animation,
-          reverseCurve: Curves.fastOutSlowIn);
-      return Align(
-        alignment: Alignment.centerRight,
-        child: SizeTransition(
-          axis: Axis.horizontal,
-          sizeFactor: animation,
-          child: page,
-          axisAlignment: 0,
-        ),
-      );
-    },
-  );
+          pageBuilder: (context, animation, anotherAnimation) => page,
+          transitionDuration: Duration(milliseconds: 1000),
+          reverseTransitionDuration: Duration(milliseconds: 200),
+          transitionsBuilder: (context, animation, anotherAnimation, child) {
+            animation = CurvedAnimation(
+                curve: Curves.fastLinearToSlowEaseIn,
+                parent: animation,
+                reverseCurve: Curves.fastOutSlowIn);
+            return Align(
+              alignment: Alignment.centerRight,
+              child: SizeTransition(
+                axis: Axis.horizontal,
+                sizeFactor: animation,
+                child: page,
+                axisAlignment: 0,
+              ),
+            );
+          },
+        );
 }

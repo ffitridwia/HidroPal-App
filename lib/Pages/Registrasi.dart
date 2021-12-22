@@ -25,6 +25,7 @@ class _RegistrasiState extends State<Registrasi> {
     password.dispose();
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,19 +36,23 @@ class _RegistrasiState extends State<Registrasi> {
           title: Row(
             children: [
               IconButton(
-                  onPressed: (){
+                  onPressed: () {
                     Navigator.of(context).pop();
                   },
-                  icon: Icon(Icons.arrow_back,color: Colors.black,)),
-              Text("Daftar Ke Hidropal",style: TextStyle(color: Colors.black),),
+                  icon: Icon(
+                    Icons.arrow_back,
+                    color: Colors.black,
+                  )),
+              Text(
+                "Daftar Ke Hidropal",
+                style: TextStyle(color: Colors.black),
+              ),
             ],
-          )
-
-
-      ),
+          )),
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 12,vertical: 10),
-        child: ListView(
+        padding: EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             TextField(
               controller: namaLengkap,
@@ -68,7 +73,6 @@ class _RegistrasiState extends State<Registrasi> {
               decoration: InputDecoration(
                 labelText: "Password",
               ),
-
             ),
             TextField(
               controller: alamat,
@@ -76,26 +80,32 @@ class _RegistrasiState extends State<Registrasi> {
                 labelText: "Alamat",
               ),
             ),
-            SizedBox(height: 20,),
-
-            SizedBox(height: 20,),
+            SizedBox(
+              height: 20,
+            ),
+            SizedBox(
+              height: 20,
+            ),
             InkWell(
-                onTap: (){
+                onTap: () {
                   bool isValidate = true;
                   var dataInput = [
-                    namaLengkap.text,noHandPhone.text,alamat.text,password.text
+                    namaLengkap.text,
+                    noHandPhone.text,
+                    alamat.text,
+                    password.text
                   ];
-                  for(int i=0; i<dataInput.length;i++){
-                    if(dataInput[i] == ""){
+                  for (int i = 0; i < dataInput.length; i++) {
+                    if (dataInput[i] == "") {
                       isValidate = false;
                       break;
                     }
                   }
-                  if(isValidate == true){
+                  if (isValidate == true) {
                     listUser.add(dataInput);
-                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Login()) );
-                  }
-                  else{
+                    Navigator.pushReplacement(context,
+                        MaterialPageRoute(builder: (context) => Login()));
+                  } else {
                     showDialog(
                         context: context,
                         builder: (context) {
@@ -103,14 +113,14 @@ class _RegistrasiState extends State<Registrasi> {
                             title: Text("Warning"),
                             content: Text("Form Tidak Boleh Ada yang Kosong!"),
                             actions: [
-
                               FlatButton(
                                 onPressed: () {
                                   setState(() {
                                     Navigator.of(context).pop(true);
                                   });
                                 },
-                                child: Text("OK", style: TextStyle(color: Colors.blue)),
+                                child: Text("OK",
+                                    style: TextStyle(color: Colors.blue)),
                               )
                             ],
                           );
@@ -122,14 +132,14 @@ class _RegistrasiState extends State<Registrasi> {
                   width: double.infinity,
                   height: 40,
                   decoration: BoxDecoration(
-                      border: Border.all(color: Colors.black,width: 1)
-                  ),
+                      border: Border.all(color: Colors.black, width: 1)),
                   child: Center(
-                    child: Text("Registrasi",style: TextStyle(fontSize: 20),),
+                    child: Text(
+                      "Registrasi",
+                      style: TextStyle(fontSize: 20),
+                    ),
                   ),
-                )
-            ),
-
+                )),
           ],
         ),
       ),
