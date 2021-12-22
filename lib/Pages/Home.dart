@@ -26,7 +26,7 @@ class _HomePagesState extends State<HomePages> {
             elevation: 2,
             child: Container(
               width: double.infinity,
-              height: 202,
+              height: 282,
               decoration: BoxDecoration(
                   color: Color.fromRGBO(0, 0, 0, 0.25),
                   image: DecorationImage(
@@ -35,7 +35,7 @@ class _HomePagesState extends State<HomePages> {
                       ),
                       fit: BoxFit.cover)),
               child: Padding(
-                padding: const EdgeInsets.only(left: 10, right: 120, top: 50),
+                padding: const EdgeInsets.only(left: 10, right: 130, top: 90),
                 child: Text(
                   "We provide fresh vegetable for your family",
                   style: TextStyle(fontSize: 18),
@@ -78,10 +78,10 @@ class _HomePagesState extends State<HomePages> {
                       Navigator.push(
                           context,
                           Transition(DetailProduct(
-                              katalog[0][0].toString(),
-                              int.parse(katalog[0][1].toString()),
-                              katalog[0][2].toString(),
-                              katalog[0][3],
+                              katalog[2][0].toString(),
+                              int.parse(katalog[2][1].toString()),
+                              katalog[2][2].toString(),
+                              katalog[2][3],
                               0)));
                     },
                     child: Container(
@@ -93,15 +93,15 @@ class _HomePagesState extends State<HomePages> {
                         children: [
                           Image(
                             image: AssetImage("assets/images/Products/" +
-                                katalog[0][2].toString()),
+                                katalog[2][2].toString()),
                           ),
                           Text(
-                            katalog[0][0].toString(),
+                            katalog[2][0].toString(),
                             style: TextStyle(
                                 fontWeight: FontWeight.w600, fontSize: 18),
                           ),
                           Text(
-                            "Rp. " + katalog[0][1].toString(),
+                            "Rp. " + katalog[2][1].toString(),
                             style: TextStyle(fontSize: 15),
                           )
                         ],
@@ -152,7 +152,7 @@ class _HomePagesState extends State<HomePages> {
                 ),
               ),
             ],
-          )
+          ),
         ],
       ),
     );
